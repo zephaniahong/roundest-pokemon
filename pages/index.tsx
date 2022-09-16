@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from "next";
+import Image from "next/image";
 import { useState } from "react";
 import { getOptionsForVote } from "../utils/getRandomPokemon";
 import { trpc } from "../utils/trpc";
@@ -55,10 +56,12 @@ const PokemonListing: React.FC<{
 }> = ({ pokemon, vote }) => {
   return (
     <div className="w-64 flex flex-col items-center space-y-2">
-      <img
+      <Image
+        height={256}
+        width={256}
         src={pokemon.sprites.front_default as string}
         alt={`Image of a ${pokemon.name}`}
-        className="w-full"
+        layout="fixed"
       />
       <div className="text-xl text-center capitalize -mt-4">{pokemon.name}</div>
       <button
